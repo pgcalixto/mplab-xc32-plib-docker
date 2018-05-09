@@ -41,7 +41,7 @@ RUN dpkg --add-architecture i386 \
     -- --unattendedmodeui none --mode unattended \
  && rm ./MPLABX-v${MPLABX_VERSION}-linux-installer.sh \
  \
- && tar xf -C /tmp /tmp/plib.tar \
+ && tar xf /tmp/plib.tar -C /tmp \
  && rm /tmp/plib.tar \
  && mv /tmp/PIC32\ Legacy\ Peripheral\ Libraries.run /tmp/plib.run \
  && USER=root /tmp/plib.run --unattendedmodeui minimal --mode unattended \
