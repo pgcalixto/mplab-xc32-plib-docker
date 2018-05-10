@@ -34,13 +34,13 @@ RUN dpkg --add-architecture i386 \
  && rm /tmp/xc32.run \
  \
  && wget -O /tmp/mplabx-installer.tar "http://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v${MPLABX_VERSION}-linux-installer.tar" \
- && tar xf /tmp/mplabx-installer.tar && rm /tmp/mplabx-installer.tar \
+ && tar -xvf /tmp/mplabx-installer.tar && rm /tmp/mplabx-installer.tar \
  && USER=root ./MPLABX-v${MPLABX_VERSION}-linux-installer.sh --nox11 \
     -- --unattendedmodeui none --mode unattended \
  && rm ./MPLABX-v${MPLABX_VERSION}-linux-installer.sh \
  \
  && wget -O /tmp/plib.tar "http://ww1.microchip.com/downloads/en//softwarelibrary/pic32%20peripheral%20library/pic32%20legacy%20peripheral%20libraries%20linux%20(2).tar" \
- && tar xf /tmp/plib.tar -C /tmp \
+ && tar -xvf /tmp/plib.tar -C /tmp \
  && rm /tmp/plib.tar \
  && mv /tmp/PIC32\ Legacy\ Peripheral\ Libraries.run /tmp/plib.run \
  && USER=root /tmp/plib.run --unattendedmodeui minimal --mode unattended \
