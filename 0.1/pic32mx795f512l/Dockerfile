@@ -28,19 +28,18 @@ RUN dpkg --add-architecture i386 \
     wget \
  \
  && wget -O /tmp/xc32.run "http://ww1.microchip.com/downloads/en/DeviceDoc/xc32-v${XC32_VERSION}-full-install-linux-installer.run" \
- && wget -O /tmp/mplabx-installer.tar "http://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v${MPLABX_VERSION}-linux-installer.tar" \
- && wget -O /tmp/plib.tar "http://ww1.microchip.com/downloads/en//softwarelibrary/pic32%20peripheral%20library/pic32%20legacy%20peripheral%20libraries%20linux%20(2).tar" \
- \
  && chmod a+x /tmp/xc32.run \
  && /tmp/xc32.run --mode unattended --unattendedmodeui none \
     --netservername localhost --LicenseType FreeMode \
  && rm /tmp/xc32.run \
  \
+ && wget -O /tmp/mplabx-installer.tar "http://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v${MPLABX_VERSION}-linux-installer.tar" \
  && tar xf /tmp/mplabx-installer.tar && rm /tmp/mplabx-installer.tar \
  && USER=root ./MPLABX-v${MPLABX_VERSION}-linux-installer.sh --nox11 \
     -- --unattendedmodeui none --mode unattended \
  && rm ./MPLABX-v${MPLABX_VERSION}-linux-installer.sh \
  \
+ && wget -O /tmp/plib.tar "http://ww1.microchip.com/downloads/en//softwarelibrary/pic32%20peripheral%20library/pic32%20legacy%20peripheral%20libraries%20linux%20(2).tar" \
  && tar xf /tmp/plib.tar -C /tmp \
  && rm /tmp/plib.tar \
  && mv /tmp/PIC32\ Legacy\ Peripheral\ Libraries.run /tmp/plib.run \
