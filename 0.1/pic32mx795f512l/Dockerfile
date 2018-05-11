@@ -54,7 +54,6 @@ RUN dpkg --add-architecture i386 \
  \
  # Remove unneeded /opt/microchip/mplabx files
  && rm -rf \
-    /opt/microchip/mplabx/v${MPLABX_VERSION}/mplab_ide/mplab_ide/modules/docs \
     /opt/microchip/mplabx/v${MPLABX_VERSION}/packs/Atmel \
     /opt/microchip/mplabx/v${MPLABX_VERSION}/packs/arm \
  && find /opt/microchip/mplabx/v${MPLABX_VERSION}/packs/Microchip -mindepth 1 \
