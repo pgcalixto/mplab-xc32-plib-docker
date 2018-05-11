@@ -6,9 +6,6 @@ ARG MPLABX_VERSION=4.15
 ARG XC32_VERSION=2.05
 
 # Sets up environment for MPLAB tools installation
-# Download and install xc32 compiler
-# Download and install MPLAB X IDE
-# Download and install PIC32 Legacy Peripheral Libraries (plib)
 RUN dpkg --add-architecture i386 \
  \
  && apt-get update && apt-get install -qq \
@@ -27,18 +24,21 @@ RUN dpkg --add-architecture i386 \
     libxtst6 \
     wget \
  \
+ # Download and install xc32 compiler
  && wget -O /tmp/xc32.run "http://ww1.microchip.com/downloads/en/DeviceDoc/xc32-v${XC32_VERSION}-full-install-linux-installer.run" \
  && chmod a+x /tmp/xc32.run \
  && /tmp/xc32.run --mode unattended --unattendedmodeui none \
     --netservername localhost --LicenseType FreeMode \
  && rm /tmp/xc32.run \
  \
+ # Download and install MPLAB X IDE
  && wget -O /tmp/mplabx-installer.tar "http://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v${MPLABX_VERSION}-linux-installer.tar" \
  && tar -xvf /tmp/mplabx-installer.tar && rm /tmp/mplabx-installer.tar \
  && USER=root ./MPLABX-v${MPLABX_VERSION}-linux-installer.sh --nox11 \
     -- --unattendedmodeui none --mode unattended \
  && rm ./MPLABX-v${MPLABX_VERSION}-linux-installer.sh \
  \
+ # Download and install PIC32 Legacy Peripheral Libraries (plib)
  && wget -O /tmp/plib.tar "http://ww1.microchip.com/downloads/en//softwarelibrary/pic32%20peripheral%20library/pic32%20legacy%20peripheral%20libraries%20linux%20(2).tar" \
  && tar -xvf /tmp/plib.tar -C /tmp \
  && rm /tmp/plib.tar \
@@ -47,10 +47,12 @@ RUN dpkg --add-architecture i386 \
     --prefix /opt/microchip/xc32/v${XC32_VERSION}/ \
  && rm /tmp/plib.run \
  \
+ # Remove unneeded packages and apt-get info
  && apt-get purge --autoremove -qq \
     wget \
  && rm -rf /var/lib/apt/lists/* \
  \
+ # Remove unneeded /opt/microchip/mplabx files
  && rm -rf \
     /opt/microchip/mplabx/v${MPLABX_VERSION}/mplab_ide/mplab_ide/modules/docs \
     /opt/microchip/mplabx/v${MPLABX_VERSION}/packs/Atmel \
@@ -60,6 +62,7 @@ RUN dpkg --add-architecture i386 \
  && find /opt/microchip/mplabx/v${MPLABX_VERSION}/packs/Microchip/PIC32MX_DFP/__version__/edc \
     -mindepth 1 -type f -not -name 'PIC32MX795F512L.PIC' -exec rm -rf {} \; \
  \
+ # Remove unneeded /opt/microchip/xc32 files
  && rm -rf \
     /opt/microchip/xc32/v${XC32_VERSION}/docs \
     /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/fPIC \
