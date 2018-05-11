@@ -86,7 +86,7 @@ RUN dpkg --add-architecture i386 \
  && find /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib -mindepth 1 \
     -maxdepth 1 -type f \( -name "libmchp_peripheral_*.a" -and -not -name \
     'libmchp_peripheral_32MX795F512L.a' \) -exec rm -rf {} \; \
- && find /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/proc -mindepth 1
+ && find /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/proc -mindepth 1 \
     -maxdepth 1 -type d \( -not -name '32MX795F512L' -and -not -name \
     '32MXGENERIC' \) -exec rm -rf {} \;
 
