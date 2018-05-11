@@ -52,41 +52,41 @@ RUN dpkg --add-architecture i386 \
  && rm -rf /var/lib/apt/lists/* \
  \
  && rm -rf \
-    /opt/microchip/mplabx/v4.15/mplab_ide/mplab_ide/modules/docs \
-    /opt/microchip/mplabx/v4.15/packs/Atmel \
-    /opt/microchip/mplabx/v4.15/packs/arm \
- && find /opt/microchip/mplabx/v4.15/packs/Microchip -mindepth 1 -maxdepth 1 \
-    -not -name 'PIC32MX_DFP' -exec rm -rf {} \; \
- && find /opt/microchip/mplabx/v4.15/packs/Microchip/PIC32MX_DFP/__version__/edc \
+    /opt/microchip/mplabx/v${MPLABX_VERSION}/mplab_ide/mplab_ide/modules/docs \
+    /opt/microchip/mplabx/v${MPLABX_VERSION}/packs/Atmel \
+    /opt/microchip/mplabx/v${MPLABX_VERSION}/packs/arm \
+ && find /opt/microchip/mplabx/v${MPLABX_VERSION}/packs/Microchip -mindepth 1 \
+    -maxdepth 1 -not -name 'PIC32MX_DFP' -exec rm -rf {} \; \
+ && find /opt/microchip/mplabx/v${MPLABX_VERSION}/packs/Microchip/PIC32MX_DFP/__version__/edc \
     -mindepth 1 -type f -not -name 'PIC32MX795F512L.PIC' -exec rm -rf {} \; \
  \
  && rm -rf \
-    /opt/microchip/xc32/v2.05/docs \
-    /opt/microchip/xc32/v2.05/lib/gcc/pic32mx/4.8.3/fPIC \
-    /opt/microchip/xc32/v2.05/lib/gcc/pic32mx/4.8.3/fpu64 \
-    /opt/microchip/xc32/v2.05/lib/gcc/pic32mx/4.8.3/longdouble \
-    /opt/microchip/xc32/v2.05/lib/gcc/pic32mx/4.8.3/micromips \
-    /opt/microchip/xc32/v2.05/lib/gcc/pic32mx/4.8.3/mips16 \
-    /opt/microchip/xc32/v2.05/lib/gcc/pic32mx/4.8.3/no-float \
-    /opt/microchip/xc32/v2.05/lib/gcc/pic32mx/4.8.3/size \
-    /opt/microchip/xc32/v2.05/lib/gcc/pic32mx/4.8.3/speed \
-    /opt/microchip/xc32/v2.05/pic32mx/lib/fPIC \
-    /opt/microchip/xc32/v2.05/pic32mx/lib/fpu64 \
-    /opt/microchip/xc32/v2.05/pic32mx/lib/longdouble \
-    /opt/microchip/xc32/v2.05/pic32mx/lib/micromips \
-    /opt/microchip/xc32/v2.05/pic32mx/lib/mips16 \
-    /opt/microchip/xc32/v2.05/pic32mx/lib/no-float \
-    /opt/microchip/xc32/v2.05/pic32mx/lib/size \
-    /opt/microchip/xc32/v2.05/pic32mx/lib/speed \
- && find /opt/microchip/xc32/v2.05/pic32mx/include/proc -mindepth 1 \
+    /opt/microchip/xc32/v${XC32_VERSION}/docs \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/fPIC \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/fpu64 \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/longdouble \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/micromips \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/mips16 \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/no-float \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/size \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/speed \
+    /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/fPIC \
+    /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/fpu64 \
+    /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/longdouble \
+    /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/micromips \
+    /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/mips16 \
+    /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/no-float \
+    /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/size \
+    /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/speed \
+ && find /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/include/proc -mindepth 1 \
     -maxdepth 1 -type f \( -not -name 'p32mx795f512l.h' -and -not -name \
     'p32mxgeneric.h' -and -not -name 'ppic32mx.h' \) -exec rm -rf {} \; \
- && find /opt/microchip/xc32/v2.05/pic32mx/lib -mindepth 1 -maxdepth 1 -type f \
-    \( -name "libmchp_peripheral_*.a" -and \
-    -not -name 'libmchp_peripheral_32MX795F512L.a' \) -exec rm -rf {} \; \
- && find /opt/microchip/xc32/v2.05/pic32mx/lib/proc -mindepth 1 -maxdepth 1 \
-    -type d \( -not -name '32MX795F512L' -and -not -name '32MXGENERIC' \) \
-    -exec rm -rf {} \;
+ && find /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib -mindepth 1 \
+    -maxdepth 1 -type f \( -name "libmchp_peripheral_*.a" -and -not -name \
+    'libmchp_peripheral_32MX795F512L.a' \) -exec rm -rf {} \; \
+ && find /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/proc -mindepth 1
+    -maxdepth 1 -type d \( -not -name '32MX795F512L' -and -not -name \
+    '32MXGENERIC' \) -exec rm -rf {} \;
 
 ENV PATH=/opt/microchip/xc32/v${XC32_VERSION}/bin:$PATH
 ENV PATH=/opt/microchip/mplabx/v${MPLABX_VERSION}/mplab_ide/bin:$PATH
