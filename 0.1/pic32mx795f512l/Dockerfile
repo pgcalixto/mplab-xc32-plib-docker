@@ -64,14 +64,14 @@ RUN dpkg --add-architecture i386 \
  # Remove unneeded /opt/microchip/xc32 files
  && rm -rf \
     /opt/microchip/xc32/v${XC32_VERSION}/docs \
-    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/fPIC \
-    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/fpu64 \
-    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/longdouble \
-    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/micromips \
-    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/mips16 \
-    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/no-float \
-    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/size \
-    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/4.8.3/speed \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/*/fPIC \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/*/fpu64 \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/*/longdouble \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/*/micromips \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/*/mips16 \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/*/no-float \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/*/size \
+    /opt/microchip/xc32/v${XC32_VERSION}/lib/gcc/pic32mx/*/speed \
     /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/fPIC \
     /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/fpu64 \
     /opt/microchip/xc32/v${XC32_VERSION}/pic32mx/lib/longdouble \
